@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/app_background"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotesInput">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        android:theme="?actionBarTheme"
+        android:background="@color/black">
+
+        <TextView
+            android:id="@+id/new_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Note"
+            android:textSize="35sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/editTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="test"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="text"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/editSubTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="test"
+        android:ems="10"
+        android:hint="Sub Title"
+        android:inputType="text"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/editDescriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:autofillHints="test"
+        android:ems="10"
+        android:gravity="bottom|start"
+        android:hint="Description"
+        android:inputType="text"
+        android:layout_marginTop="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioColourGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="0dp">
+
+        <RadioButton
+            android:id="@+id/radioYellow"
+            android:text="yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/yellow"/>
+        <RadioButton
+            android:id="@+id/radioRed"
+            android:text="red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/red"/>
+        <RadioButton
+            android:id="@+id/radioBlue"
+            android:text="Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/blue"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:onClick="cancelNotes"
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:onClick="saveNotes"
+            android:text="@string/previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonDeleteNotes"
+        android:onClick="deleteNotes"
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

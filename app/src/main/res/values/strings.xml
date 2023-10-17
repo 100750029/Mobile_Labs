@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mobile_Labs</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Home Page</string>
+    <string name="second_fragment_label">New Note</string>
+    <string name="next">+</string>
+    <string name="previous">Save Note</string>
+
+</resources>
