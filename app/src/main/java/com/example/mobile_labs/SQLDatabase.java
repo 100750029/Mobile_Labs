@@ -6,9 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.annotation.Nullable;
 
+import java.io.ByteArrayOutputStream;
+import java.sql.Blob;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,7 +22,7 @@ public class SQLDatabase extends SQLiteOpenHelper {
 
     private static SQLDatabase sqlDatabase;
 
-    private static final String DATABASE_NAME = "NotesDatabases"; // Database name
+    private static final String DATABASE_NAME = "NotesDatabasesLabProject"; // Database name
     private static final int DATABASE_VERSION = 1; // Database version
     private static final String TABLE_NAME = "NotesTable"; // Table name
     private static final String Counter = "Counter"; // Counter
@@ -28,6 +32,7 @@ public class SQLDatabase extends SQLiteOpenHelper {
     private static final String Description = "description"; // Note description
     private static final String Note_Background = "noteBackground"; // Note colour
     private static final String Deleted_Note = "deleted"; // Deleted note
+    private static final String Picture = "picture"; // Note Picture
 
     // Converting date format
     @SuppressLint("SimpleDateFormat")
@@ -67,6 +72,8 @@ public class SQLDatabase extends SQLiteOpenHelper {
                 .append(" TEXT, ")
                 .append(Note_Background)
                 .append(" TEXT, ")
+                .append(Picture)
+                .append(" BLOB, ")
                 .append(Deleted_Note)
                 .append(" TEXT)");
 
@@ -95,6 +102,7 @@ public class SQLDatabase extends SQLiteOpenHelper {
         cv.put(SubTitle,notes.getSubTitle());
         cv.put(Description,notes.getDescription());
         cv.put(Note_Background,notes.getChangeBackground());
+        cv.put(Picture,notes.getPicture());
         cv.put(Deleted_Note, getStringFromDate(notes.getDeleted()));
 
         // SQl statement for adding notes
@@ -118,9 +126,11 @@ public class SQLDatabase extends SQLiteOpenHelper {
                     String subtitle = result.getString(3);
                     String description = result.getString(4);
                     String changebackground = result.getString(5);
-                    String stringDelete = result.getString(6);
+                    byte[] picture = result.getBlob(6);
+                    String stringDelete = result.getString(7);
                     Date delete = getDateFromString(stringDelete);
-                    Notes notes = new Notes(id,title,subtitle,description, changebackground, delete);
+
+                    Notes notes = new Notes(id,title,subtitle,description, changebackground, picture, delete);
                     Notes.notesArrayList.add(notes);
                 }
 
@@ -141,6 +151,7 @@ public class SQLDatabase extends SQLiteOpenHelper {
         cv.put(SubTitle,notes.getSubTitle());
         cv.put(Description,notes.getDescription());
         cv.put(Note_Background,notes.getChangeBackground());
+        cv.put(Picture, notes.getPicture());
         cv.put(Deleted_Note, getStringFromDate(notes.getDeleted()));
 
         // SQl statement for updating notes
@@ -164,4 +175,5 @@ public class SQLDatabase extends SQLiteOpenHelper {
             return null;
         }
     }
+
 }

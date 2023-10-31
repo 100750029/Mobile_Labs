@@ -22,12 +22,12 @@ import android.widget.ListView;
 import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView notesListView;
-
     private SearchView notesSearch;
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         initWidgets();
         setNotesAdapter();
         DatabaseLoad();
-//        setOnClickListener();
+        setOnClickListener();
         setupSearchView();
 
     }
@@ -91,20 +91,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    private void setOnClickListener()
-//    {
-//        notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-//        {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
-//            {
-//                Notes selectedNote = (Notes) notesListView.getItemAtPosition(position);
-//                Intent editNoteIntent = new Intent(getApplicationContext(), NotesInput.class);
-//                editNoteIntent.putExtra(Notes.NOTE_EDIT_EXTRA, selectedNote.getId());
-//                startActivity(editNoteIntent);
-//            }
-//        });
-//    }
+    private void setOnClickListener()
+    {
+        notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+            {
+                Notes selectedNote = (Notes) notesListView.getItemAtPosition(position);
+                Intent editNoteIntent = new Intent(getApplicationContext(), NotesInput.class);
+                editNoteIntent.putExtra(Notes.NOTE_EDIT_EXTRA, selectedNote.getId());
+                startActivity(editNoteIntent);
+            }
+        });
+    }
 
     public void newNotes(View view){
         Intent newNotesIntent = new Intent(this,NotesInput.class);

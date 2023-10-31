@@ -15,22 +15,26 @@ public class Notes {
     private String title, subTitle, description, changeBackground; // Variable for note information
     private Date deleted; // Variable for deleting notes
 
+    private byte[] picture;
+
     // Constructor for Notes
-    public Notes(int id, String title, String subTitle, String description, String changeBackground) {
+    public Notes(int id, String title, String subTitle, String description, String changeBackground, byte[] picture) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
         this.description = description;
         this.changeBackground = changeBackground;
+        this.picture = picture;
         deleted = null;
     }
 
-    public Notes(int id, String title, String subTitle, String description, String changeBackground, Date deleted) {
+    public Notes(int id, String title, String subTitle, String description, String changeBackground, byte[] picture, Date deleted) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
         this.description = description;
         this.changeBackground = changeBackground;
+        this.picture = picture;
         this.deleted = deleted;
     }
 
@@ -107,6 +111,14 @@ public class Notes {
     public void setChangeBackground(String changeBackground) {
         this.changeBackground = changeBackground; // Setter for background colour
     }
+
+    public byte[] getPicture() {
+        return picture;
+    } // Getter for image
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    } // Setter for image
 
 
 
